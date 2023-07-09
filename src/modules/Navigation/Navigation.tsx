@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+// Eslint rules disabled due to next-themes
+
 "use client";
 
 import {
@@ -7,8 +13,10 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@components/ui/navigation-menu";
+import { cn } from "@root/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 const paths = [
   {
@@ -23,6 +31,8 @@ const paths = [
 
 export const Navigation = () => {
   const pathName = usePathname();
+  const { setTheme } = useTheme();
+
   const menuItems = paths.map((path, key) => (
     <NavigationMenuItem key={key}>
       <Link
@@ -31,7 +41,10 @@ export const Navigation = () => {
         passHref
       >
         <NavigationMenuLink
-          className={navigationMenuTriggerStyle()}
+          className={cn(
+            navigationMenuTriggerStyle(),
+            "dark:bg-transparent dark:text-slate-100"
+          )}
           active={pathName === path.url}
         >
           {path.name}
@@ -40,8 +53,13 @@ export const Navigation = () => {
     </NavigationMenuItem>
   ));
   return (
-    <NavigationMenu className="mt-5">
-      <NavigationMenuList>{menuItems}</NavigationMenuList>
-    </NavigationMenu>
+    <>
+      <button onClick={() => setTheme("light")}>light</button>
+      <button onClick={() => setTheme("dark")}>dark</button>
+
+      <NavigationMenu className="mt-5">
+        <NavigationMenuList>{menuItems}</NavigationMenuList>
+      </NavigationMenu>
+    </>
   );
 };
