@@ -1,3 +1,4 @@
+import { Navigation } from "@modules/Navigation";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -17,7 +18,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="container flex max-w-screen-sm flex-col items-center justify-center">
+          <h1 className="mt-10 text-center text-5xl font-extrabold text-slate-900">
+            Strength <br /> Application
+          </h1>
+
+          <Navigation />
+
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
