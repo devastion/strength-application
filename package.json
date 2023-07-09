@@ -1,0 +1,65 @@
+{
+  "name": "strength-application",
+  "description": "Calculate your 1RM and wilks score!",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier -uw --cache . && git update-index --again",
+    "test": "jest --watch",
+    "test:ci": "jest --ci",
+    "prepare": "git init && npx husky install"
+  },
+  "dependencies": {
+    "next": "13.4.9",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/node": "20.4.1",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "@types/testing-library__jest-dom": "^5.14.7",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.9",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jest": "^27.2.2",
+    "eslint-plugin-jest-dom": "^5.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-sonarjs": "^0.19.0",
+    "eslint-plugin-testing-library": "^5.11.0",
+    "eslint-plugin-unicorn": "^47.0.0",
+    "husky": "^8.0.0",
+    "jest": "^29.6.1",
+    "jest-environment-jsdom": "^29.6.1",
+    "lint-staged": "^13.2.3",
+    "postcss": "8.4.25",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "tailwindcss": "3.3.2",
+    "typescript": "5.1.6"
+  },
+  "homepage": "https://github.com/devastion/strength-application#readme",
+  "bugs": {
+    "url": "https://github.com/devastion/strength-application/issues",
+    "email": "banev_dimitar@mail.com"
+  },
+  "license": "MIT",
+  "author": "Dimitar Banev <banev_dimitar@mail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devastion/strength-application.git"
+  }
+}
