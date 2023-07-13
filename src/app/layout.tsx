@@ -1,6 +1,7 @@
-import { SettingsButton } from "@components/SettingsButton";
 import { Providers } from "@lib/providers";
 import { Navigation } from "@modules/Navigation";
+import { Settings } from "@modules/Settings";
+import { cn } from "@root/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -24,19 +25,22 @@ export default function RootLayout({
       // Due to darkmode class in the html tag
       suppressHydrationWarning
     >
-      <body className={inter.className}>
+      <body className={cn(inter.className, "dark:bg-slate-950")}>
         <Providers>
-          <main className="container flex max-w-screen-sm flex-col items-center justify-center">
-            <h1 className="mt-10 text-center text-5xl font-extrabold text-slate-900 dark:text-slate-100">
-              Strength <br /> Application
-            </h1>
+          <div className="container max-w-screen-sm">
+            <header className="relative">
+              <h1 className="pt-10 text-center text-5xl font-extrabold text-slate-900 dark:text-slate-100">
+                Strength <br /> Application
+              </h1>
+              <Settings />
+            </header>
 
-            <SettingsButton />
+            <main className="flex flex-col items-center justify-center">
+              <Navigation />
 
-            <Navigation />
-
-            {children}
-          </main>
+              {children}
+            </main>
+          </div>
         </Providers>
       </body>
     </html>
