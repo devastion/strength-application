@@ -3,18 +3,24 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "@components/ThemeProvider";
-import { store } from "@lib/redux/store";
+import { persistor, store } from "@lib/redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 export const Providers = (props: React.PropsWithChildren) => {
   return (
     <Provider store={store}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
+      <PersistGate
+        loading={undefined}
+        persistor={persistor}
       >
-        {props.children}
-      </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          {props.children}
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   );
 };
