@@ -18,6 +18,8 @@ interface SelectButtonProps {
   label: string;
   items: SelectItem[];
   value: string;
+  // ? Due to some radixUi types
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: React.Dispatch<React.SetStateAction<any>>;
   heading: string;
 }
