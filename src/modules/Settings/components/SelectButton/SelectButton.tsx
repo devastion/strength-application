@@ -50,7 +50,7 @@ export const SelectButton = ({
         value={value}
         onValueChange={setValue}
       >
-        <SelectTrigger className="w-[220px]">
+        <SelectTrigger className="w-full">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>

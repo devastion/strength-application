@@ -105,7 +105,7 @@ export const Settings = () => {
             variant="outline"
             className="uppercase"
           >
-            Close Modal
+            Close Settings
           </Button>
         </DialogTrigger>
       </DialogContent>
