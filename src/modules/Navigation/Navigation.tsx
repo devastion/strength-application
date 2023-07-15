@@ -16,7 +16,6 @@ import {
 import { cn } from "@root/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
 
 const paths = [
   {
@@ -31,7 +30,6 @@ const paths = [
 
 export const Navigation = () => {
   const pathName = usePathname();
-  const { setTheme } = useTheme();
 
   const menuItems = paths.map((path, key) => (
     <NavigationMenuItem key={key}>
@@ -53,13 +51,8 @@ export const Navigation = () => {
     </NavigationMenuItem>
   ));
   return (
-    <>
-      <button onClick={() => setTheme("light")}>light</button>
-      <button onClick={() => setTheme("dark")}>dark</button>
-
-      <NavigationMenu className="mt-5">
-        <NavigationMenuList>{menuItems}</NavigationMenuList>
-      </NavigationMenu>
-    </>
+    <NavigationMenu className="my-5">
+      <NavigationMenuList>{menuItems}</NavigationMenuList>
+    </NavigationMenu>
   );
 };

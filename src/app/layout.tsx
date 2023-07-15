@@ -25,7 +25,10 @@ export default function RootLayout({
       // Due to darkmode class in the html tag
       suppressHydrationWarning
     >
-      <body className={cn(inter.className, "dark:bg-slate-950")}>
+      <body
+        className={cn(inter.className, "dark:bg-slate-950")}
+        suppressHydrationWarning
+      >
         <Providers>
           <div className="container max-w-screen-sm">
             <header className="relative">
