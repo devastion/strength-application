@@ -18,7 +18,7 @@ interface SelectButtonProps {
   label: string;
   items: SelectItem[];
   value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  setValue: React.Dispatch<React.SetStateAction<any>>;
   heading: string;
 }
 
