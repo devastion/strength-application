@@ -1,3 +1,4 @@
+import formulaSlice from "@lib/redux/slices/formulaSlice";
 import unitsSlice from "@lib/redux/slices/unitsSlice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   units: unitsSlice,
+  formulas: formulaSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

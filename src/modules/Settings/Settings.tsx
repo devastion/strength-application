@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { FiSettings } from "react-icons/fi";
+import { Button } from "@components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -9,11 +10,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@components/ui/dialog";
+import { Separator } from "@components/ui/separator";
 import {
-  selectUnitsState,
-  setUnitKilograms,
-  setUnitPounds,
-} from "@lib/redux/slices/unitsSlice";
+  selectFormulaState,
+  setFormulaState,
+} from "@lib/redux/slices/formulaSlice";
+import { selectUnitsState, setUnitState } from "@lib/redux/slices/unitsSlice";
 import { useAppDispatch, useAppSelector } from "@root/hooks";
 import { useTheme } from "next-themes";
 
@@ -29,6 +31,14 @@ const unitItems = [
   { name: "Pounds", value: "pounds" },
 ];
 
+const formulasItems = [
+  { name: "Brzycki's formula", value: "weight * (36 / (37 - reps))" },
+  {
+    name: "Epley's formula",
+    value: "weight * (1 + 0.0333 * reps)",
+  },
+];
+
 export const Settings = () => {
   const dispatch = useAppDispatch();
 
@@ -40,12 +50,17 @@ export const Settings = () => {
   const selectedUnits = useAppSelector(selectUnitsState);
   const [units, setUnits] = React.useState(selectedUnits);
 
+  const selectedFormulaState = useAppSelector(selectFormulaState);
+  const [formula, setFormula] = React.useState(selectedFormulaState);
+
+  React.useEffect(() => {
+    dispatch(setUnitState(units));
+  }, [dispatch, units]);
+
   React.useEffect(() => {
     setTheme(themeValue);
-    units === "kilograms"
-      ? dispatch(setUnitKilograms())
-      : dispatch(setUnitPounds());
-  }, [dispatch, setTheme, themeValue, units]);
+    dispatch(setFormulaState(formula));
+  }, [dispatch, setTheme, themeValue, formula]);
 
   return (
     <Dialog>
@@ -76,6 +91,23 @@ export const Settings = () => {
           setValue={setUnits}
           heading="Select Units"
         />
+        <SelectButton
+          label="Select Formula"
+          placeholder="Select Formula"
+          items={formulasItems}
+          value={formula}
+          setValue={setFormula}
+          heading="Select Formula"
+        />
+        <Separator />
+        <DialogTrigger>
+          <Button
+            variant="outline"
+            className="uppercase"
+          >
+            Close Modal
+          </Button>
+        </DialogTrigger>
       </DialogContent>
     </Dialog>
   );
