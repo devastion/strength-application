@@ -21,21 +21,38 @@ import { useTheme } from "next-themes";
 
 import { SelectButton } from "./components/SelectButton/SelectButton";
 
-const themeItems = [
+interface ItemsType {
+  name: string;
+  value: string;
+}
+
+const themeItems: ItemsType[] = [
   { name: "Light Theme", value: "light" },
   { name: "Dark Theme", value: "dark" },
 ];
 
-const unitItems = [
+const unitItems: ItemsType[] = [
   { name: "Kilograms", value: "kilograms" },
   { name: "Pounds", value: "pounds" },
 ];
 
-const formulasItems = [
+const formulasItems: ItemsType[] = [
   { name: "Brzycki's formula", value: "weight * (36 / (37 - reps))" },
   {
     name: "Epley's formula",
     value: "weight * (1 + 0.0333 * reps)",
+  },
+  {
+    name: "Lander's formula",
+    value: "(100 * weight) / (101.3 - 2.67123 * reps)",
+  },
+  {
+    name: "Lombardi's formula",
+    value: "weight * reps ^ 0.1",
+  },
+  {
+    name: "O'Conner's formula",
+    value: "weight * (1 + 0.025 * reps)",
   },
 ];
 

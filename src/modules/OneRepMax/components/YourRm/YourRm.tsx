@@ -18,7 +18,7 @@ export const YourRm = ({ weight, reps }: YourRmProps) => {
   const result =
     weight && reps
       ? Math.round(
-          // ? no types
+          // ? the package is types as any
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           expression.evaluate({ weight: weight, reps: reps })
         )
