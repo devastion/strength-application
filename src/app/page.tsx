@@ -1,3 +1,5 @@
+import { OneRepMax } from "@modules/OneRepMax/OneRepMax";
+
 export default function HomePage() {
   return (
     <div>
@@ -5,6 +7,7 @@ export default function HomePage() {
         Calculate your one repetition maximum by entering the weight and
         repetitions.
       </p>
+      <OneRepMax />
     </div>
   );
 }

@@ -59,8 +59,11 @@ export const Settings = () => {
 
   React.useEffect(() => {
     setTheme(themeValue);
+  }, [setTheme, themeValue]);
+
+  React.useEffect(() => {
     dispatch(setFormulaState(formula));
-  }, [dispatch, setTheme, themeValue, formula]);
+  }, [dispatch, formula]);
 
   return (
     <Dialog>
@@ -100,10 +103,10 @@ export const Settings = () => {
           heading="Select Formula"
         />
         <Separator />
-        <DialogTrigger>
+        <DialogTrigger asChild>
           <Button
             variant="outline"
-            className="uppercase"
+            className="ml-auto w-7/12 font-medium uppercase text-slate-900 dark:text-slate-100"
           >
             Close Settings
           </Button>
