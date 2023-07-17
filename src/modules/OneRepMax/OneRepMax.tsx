@@ -21,7 +21,7 @@ export const OneRepMax = () => {
   }
 
   return (
-    <div className="my-3 flex flex-col items-center justify-center">
+    <div className="my-3 flex flex-col items-center justify-center pb-12">
       <InputRm
         ref={weightRef}
         value={weight}
