@@ -3,7 +3,8 @@ import unitsSlice from "@lib/redux/slices/unitsSlice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import { persistReducer, persistStore } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+
+import storage from "./syncStorage";
 
 const persistConfig = {
   key: "root",

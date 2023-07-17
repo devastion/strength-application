@@ -87,5 +87,6 @@
         "jest/valid-expect": "error"
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["syncStorage.js"]
 }
