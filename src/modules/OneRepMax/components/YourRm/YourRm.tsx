@@ -10,7 +10,7 @@ interface YourRmProps {
   reps: number;
 }
 
-export const YourRm = ({ weight, reps }: YourRmProps) => {
+export const YourRm = ({ weight, reps, ...props }: YourRmProps) => {
   const formulaState = useAppSelector(selectFormulaState);
   const unitState = useAppSelector(selectUnitsState);
   const unit = unitState === "kilograms" ? "KG" : "LB";
@@ -28,7 +28,10 @@ export const YourRm = ({ weight, reps }: YourRmProps) => {
       <h3 className="my-5 text-3xl font-bold uppercase text-slate-900 dark:text-slate-200">
         Your 1RM is
       </h3>
-      <span className="text-5xl font-semibold text-red-600">
+      <span
+        className="text-5xl font-semibold text-red-600"
+        {...props}
+      >
         {result}
         {unit}
       </span>

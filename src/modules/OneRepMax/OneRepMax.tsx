@@ -23,6 +23,7 @@ export const OneRepMax = () => {
   return (
     <div className="my-3 flex flex-col items-center justify-center pb-12">
       <InputRm
+        data-testid="weight-input"
         ref={weightRef}
         value={weight}
         label="Weight"
@@ -33,6 +34,7 @@ export const OneRepMax = () => {
       />
 
       <InputRm
+        data-testid="reps-input"
         ref={repsRef}
         value={reps}
         label="Repetitions"
@@ -43,6 +45,7 @@ export const OneRepMax = () => {
       />
 
       <YourRm
+        data-testid="1rm-output"
         weight={Number.parseInt(deferredWeight)}
         reps={Number.parseInt(deferredReps)}
       />

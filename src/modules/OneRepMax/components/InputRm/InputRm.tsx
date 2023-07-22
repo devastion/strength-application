@@ -14,7 +14,15 @@ interface InputRmProps {
 
 export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
   function InputRm(
-    { label, paragraph, value, placeholder, onChangeHandle, onFocusHandle },
+    {
+      label,
+      paragraph,
+      value,
+      placeholder,
+      onChangeHandle,
+      onFocusHandle,
+      ...props
+    },
     ref
   ) {
     return (
@@ -34,6 +42,7 @@ export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
           onChange={onChangeHandle}
           onFocus={onFocusHandle}
           placeholder={placeholder}
+          {...props}
         />
         <p className="text-sm text-slate-500">{paragraph}</p>
       </div>
