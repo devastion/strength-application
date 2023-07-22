@@ -84,11 +84,11 @@ export const Settings = () => {
 
   return (
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger data-testid="settings-icon">
         <FiSettings className="absolute right-0 top-6 h-6 w-6 opacity-50 hover:opacity-100" />
       </DialogTrigger>
 
-      <DialogContent>
+      <DialogContent data-testid="settings-dialog">
         <DialogHeader>
           <DialogTitle className="uppercase">Settings</DialogTitle>
           <DialogDescription className="text-start">
