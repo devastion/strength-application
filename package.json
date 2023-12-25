@@ -13,7 +13,6 @@
     "format": "prettier -uw --cache . && git update-index --again",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "prepare": "git init && npx husky install",
     "commit": "git-cz"
   },
   "config": {

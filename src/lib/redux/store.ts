@@ -18,15 +18,20 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// ? No types
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-const logger = createLogger({
-  level: "info",
-});
+const middlewares = [];
+
+if (process.env.NODE_ENV === `development`) {
+  // ? No types
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+  const logger = createLogger({
+    level: "info",
+  });
+  middlewares.push(logger);
+}
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: [logger],
+  middleware: middlewares,
 });
 
 export const persistor = persistStore(store);
