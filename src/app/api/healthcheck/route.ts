@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { NextResponse } from "next/server";
+
 export function GET() {
-  return Response.json(
-    { status: "ok", time: Date.now() },
-    {
-      status: 200,
-    }
-  );
+  const data = {
+    status: "ok",
+    time: Date.now(),
+  };
+
+  return NextResponse.json({ data }, { status: 200 });
 }
