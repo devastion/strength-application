@@ -29,6 +29,7 @@ interface ItemsType {
 const themeItems: ItemsType[] = [
   { name: "Light Theme", value: "light" },
   { name: "Dark Theme", value: "dark" },
+  { name: "System Theme", value: "system" },
 ];
 
 const unitItems: ItemsType[] = [
