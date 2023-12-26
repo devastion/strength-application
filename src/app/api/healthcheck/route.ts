@@ -6,5 +6,5 @@ export function GET() {
     time: Date.now(),
   };
 
-  return NextResponse.json({ data }, { status: 200 });
+  return NextResponse.json(data, { status: 200 });
 }
