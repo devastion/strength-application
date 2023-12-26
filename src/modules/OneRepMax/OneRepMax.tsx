@@ -29,6 +29,7 @@ export const OneRepMax = () => {
         label="Weight"
         paragraph="Enter the weight you used for your lift"
         placeholder="Weight"
+        max={500}
         onChangeHandle={weightOnChange}
         onFocusHandle={() => setWeight("")}
       />
@@ -40,6 +41,7 @@ export const OneRepMax = () => {
         label="Repetitions"
         paragraph="Enter the repetitions you have done"
         placeholder="Repetitions"
+        max={25}
         onChangeHandle={repsOnChange}
         onFocusHandle={() => setReps("")}
       />

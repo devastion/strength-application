@@ -8,6 +8,7 @@ interface InputRmProps {
   paragraph: string;
   value: string;
   placeholder: string;
+  max: number;
   onChangeHandle: () => void;
   onFocusHandle: () => void;
 }
@@ -19,6 +20,7 @@ export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
       paragraph,
       value,
       placeholder,
+      max,
       onChangeHandle,
       onFocusHandle,
       ...props
@@ -36,9 +38,11 @@ export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
         <Input
           id="weight"
           type="number"
+          inputMode="numeric"
           className="my-2"
           value={value}
           ref={ref}
+          max={max}
           onChange={onChangeHandle}
           onFocus={onFocusHandle}
           placeholder={placeholder}
