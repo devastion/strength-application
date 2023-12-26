@@ -17,4 +17,11 @@ Roadmap:
 - [ ] CI/CD Pipeline
 - [ ] History
 
+## How to start the project
+
+1. `git pull`
+2. `npm install`
+3. `npx husky install`
+4. You can use `npm run commit` to commit with commitizen.
+
 ![Iphone 12 Pro Screenshot](screenshots/iphone_12_pro.png)
