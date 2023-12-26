@@ -34,7 +34,8 @@
     "unicorn/prevent-abbreviations": "off",
     // eslint-plugin-simple-import-sort
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "sonarjs/no-duplicate-string": "off"
   },
   "overrides": [
     {
@@ -87,5 +88,6 @@
         "jest/valid-expect": "error"
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["syncStorage.js"]
 }

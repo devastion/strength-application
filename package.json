@@ -13,7 +13,6 @@
     "format": "prettier -uw --cache . && git update-index --again",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "prepare": "git init && npx husky install",
     "commit": "git-cz"
   },
   "config": {
@@ -23,6 +22,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-navigation-menu": "^1.1.3",
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-separator": "^1.0.3",
@@ -30,6 +30,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
+    "expr-eval": "^2.0.2",
     "lucide-react": "^0.259.0",
     "next": "13.4.9",
     "next-themes": "^0.2.1",

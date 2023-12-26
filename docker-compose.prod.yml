@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  strength-app-prod:
+    build:
+      context: .
+      dockerfile: dockerfiles/prod.dockerfile
+    ports:
+      - "3003:80"

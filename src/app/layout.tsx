@@ -30,7 +30,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Providers>
-          <div className="container max-w-screen-sm">
+          <div className="container relative min-h-screen max-w-[480px] md:mt-16">
             <header className="relative">
               <h1 className="pt-10 text-center text-5xl font-extrabold text-slate-900 dark:text-slate-100">
                 Strength <br /> Application
@@ -43,6 +43,16 @@ export default function RootLayout({
 
               {children}
             </main>
+            <footer className="right-0 w-full text-center text-slate-600 dark:text-slate-700 max-md:absolute max-md:bottom-3">
+              Developed by{" "}
+              <a
+                href="https://github.com/devastion"
+                target="_blank"
+                className="text-slate-900 underline underline-offset-4 dark:text-slate-500"
+              >
+                Dimitar Banev
+              </a>
+            </footer>
           </div>
         </Providers>
       </body>
