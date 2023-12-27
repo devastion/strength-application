@@ -136,7 +136,12 @@ export const Wilks = () => {
         <h3 className="my-5 text-3xl font-bold uppercase text-slate-900 dark:text-slate-200">
           Your Wilks Score is
         </h3>
-        <span className="text-5xl font-semibold text-red-600">{wilks}</span>
+        <span
+          className="text-5xl font-semibold text-red-600"
+          data-testid="wilks-output"
+        >
+          {wilks}
+        </span>
       </div>
     </div>
   );
