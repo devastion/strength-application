@@ -23,6 +23,7 @@ export const OneRepMax = () => {
   return (
     <div className="my-3 flex flex-col items-center justify-center pb-12">
       <InputRm
+        customClasses="my-5 w-10/12 md:w-full"
         data-testid="weight-input"
         ref={weightRef}
         value={weight}
@@ -35,6 +36,7 @@ export const OneRepMax = () => {
       />
 
       <InputRm
+        customClasses="my-5 w-10/12 md:w-full"
         data-testid="reps-input"
         ref={repsRef}
         value={reps}

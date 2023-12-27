@@ -11,6 +11,7 @@ interface InputRmProps {
   max: number;
   onChangeHandle: () => void;
   onFocusHandle: () => void;
+  customClasses: string;
 }
 
 export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
@@ -23,20 +24,21 @@ export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
       max,
       onChangeHandle,
       onFocusHandle,
+      customClasses = "",
       ...props
     },
     ref
   ) {
     return (
-      <div className="my-5 w-10/12 md:w-full">
+      <div className={customClasses}>
         <Label
-          htmlFor="weight"
+          htmlFor={label.toLowerCase()}
           className="text-sm font-medium text-slate-900 dark:text-slate-200"
         >
           {label}
         </Label>
         <Input
-          id="weight"
+          id={label.toLowerCase()}
           type="number"
           inputMode="numeric"
           className="my-2"

@@ -13,7 +13,7 @@ Tech Stack:
 
 Roadmap:
 
-- [ ] Wilks Page
+- [x] Wilks Page
 - [ ] CI/CD Pipeline
 - [ ] History
 
