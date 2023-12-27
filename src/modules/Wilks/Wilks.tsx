@@ -93,6 +93,7 @@ export const Wilks = () => {
     <div className="my-3 flex flex-col items-center justify-center gap-2 pb-12">
       <div className="my-3 flex w-9/12 flex-col justify-center gap-2">
         <SelectButton
+          data-testid="gender-input"
           label="Select Gender"
           placeholder="Select Gender"
           items={genders}

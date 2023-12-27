@@ -3,8 +3,8 @@ import { store } from "@root/lib/redux/store";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import { Wilks } from "./Wilks";
-describe("OneRepMax.tsx", () => {
-  test("Brzycki's formula", () => {
+describe("Wilks.tsx", () => {
+  test("Male", () => {
     render(
       <Provider store={store}>
         <Wilks />
