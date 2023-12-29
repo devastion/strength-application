@@ -34,15 +34,25 @@ const femaleValues: number[] = [
   -9.054 * Math.pow(10, -8),
 ];
 
-function calculateWilks(gender: string, bodyWeight: number, total: number) {
+function calculateWilks(
+  gender: string,
+  bodyWeight: number,
+  total: number,
+  unitType: string
+) {
+  const totalConverted =
+    unitType === "pounds" ? total / 2.204_622_621_85 : total;
+  const bodyweightConverted =
+    unitType === "pounds" ? bodyWeight / 2.204_622_621_85 : bodyWeight;
+
   let coeff = 0;
   const values = gender === "male" ? maleValues : femaleValues;
 
   for (let i = 0; i < 6; i++) {
-    coeff += i === 0 ? values[i] : values[i] * Math.pow(bodyWeight, i);
+    coeff += i === 0 ? values[i] : values[i] * Math.pow(bodyweightConverted, i);
   }
 
-  return total * (500 / coeff);
+  return totalConverted * (500 / coeff);
 }
 
 export const Wilks = () => {
@@ -81,13 +91,13 @@ export const Wilks = () => {
       const bodyWeight = Number(defferedBw);
       const liftedTotal = Number(defferedTotal);
       const wilksScore = Number(
-        calculateWilks(gender, bodyWeight, liftedTotal).toFixed(2)
+        calculateWilks(gender, bodyWeight, liftedTotal, unitState).toFixed(2)
       );
       setWilks(wilksScore);
     } else {
       setWilks(0);
     }
-  }, [defferedBw, defferedTotal, gender]);
+  }, [defferedBw, defferedTotal, gender, unitState]);
 
   return (
     <div className="my-3 flex flex-col items-center justify-center gap-2 pb-12">
