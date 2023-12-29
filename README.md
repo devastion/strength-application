@@ -2,7 +2,7 @@
 
 Simple web application to estimate your one rep max of a gym lift based on the lifted weight and repetitions done. Also there is option to calculate your powerlifting wilks score.
 
-[**LIVE DEMO**](http://strength-app-load-balancer-2068509281.eu-west-1.elb.amazonaws.com/)
+[**LIVE DEMO**](http://strength-app-load-balancer-2068509281.eu-west-1.elb.amazonaws.com/) - Currently unavailable due to AWS costs. Switching to VPS added to the roadmap.
 
 Tech Stack:
 
@@ -14,6 +14,7 @@ Tech Stack:
 Roadmap:
 
 - [x] Wilks Page
+- [ ] Switch from AWS to VPS
 - [ ] CI/CD Pipeline
 - [ ] History
 
