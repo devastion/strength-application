@@ -13,11 +13,22 @@ export const OneRepMax = () => {
   }
 
   // ? Repetitions
+  const maxReps = 25;
   const repsRef = React.useRef<HTMLInputElement>(null);
   const [reps, setReps] = React.useState<string>("");
   const deferredReps = React.useDeferredValue(reps);
+  const [repsError, setRepsError] = React.useState<boolean>(false);
   function repsOnChange() {
-    setReps(repsRef.current ? repsRef.current.value : "");
+    if (
+      (repsRef.current && Number(repsRef.current.value) < 1) ||
+      Number(repsRef.current?.value) > maxReps
+    ) {
+      setRepsError(true);
+      setReps("");
+    } else {
+      setRepsError(false);
+      setReps(repsRef.current ? repsRef.current.value : "");
+    }
   }
 
   return (
@@ -33,6 +44,8 @@ export const OneRepMax = () => {
         max={500}
         onChangeHandle={weightOnChange}
         onFocusHandle={() => setWeight("")}
+        error={false}
+        errorMsg={""}
       />
 
       <InputRm
@@ -46,6 +59,8 @@ export const OneRepMax = () => {
         max={25}
         onChangeHandle={repsOnChange}
         onFocusHandle={() => setReps("")}
+        error={repsError}
+        errorMsg="Repetitions cannot be less than 1 or greater than 25"
       />
 
       <YourRm

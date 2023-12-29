@@ -125,6 +125,8 @@ export const Wilks = () => {
           max={500}
           onChangeHandle={bwOnChange}
           onFocusHandle={() => setBw("")}
+          error={false}
+          errorMsg=""
         />
       </div>
 
@@ -140,6 +142,8 @@ export const Wilks = () => {
           max={1500}
           onChangeHandle={totalOnChange}
           onFocusHandle={() => setTotal("")}
+          error={false}
+          errorMsg=""
         />
       </div>
 

@@ -12,6 +12,8 @@ interface InputRmProps {
   onChangeHandle: () => void;
   onFocusHandle: () => void;
   customClasses: string;
+  error: boolean;
+  errorMsg: string;
 }
 
 export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
@@ -25,6 +27,8 @@ export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
       onChangeHandle,
       onFocusHandle,
       customClasses = "",
+      error = false,
+      errorMsg,
       ...props
     },
     ref
@@ -50,7 +54,8 @@ export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
           placeholder={placeholder}
           {...props}
         />
-        <p className="text-sm text-slate-500">{paragraph}</p>
+        {!error && <p className="text-sm text-slate-500">{paragraph}</p>}
+        {error && <p className="text-sm text-red-500">{errorMsg}</p>}
       </div>
     );
   }
