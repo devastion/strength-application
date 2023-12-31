@@ -2,7 +2,7 @@
 
 Simple web application to estimate your one rep max of a gym lift based on the lifted weight and repetitions done. Also there is option to calculate your powerlifting wilks score.
 
-[**LIVE DEMO**](http://154.62.108.102:3333/)
+[**LIVE DEMO** - https://strength-application.devastion.com/](https://strength-application.devastion.com/)
 
 Tech Stack:
 
