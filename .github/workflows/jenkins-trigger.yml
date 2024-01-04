@@ -11,4 +11,4 @@ jobs:
         with:
           url: ${{ secrets.JENKINS_URL }}
           method: "POST"
-          customHeaders: '{"Content-Type": "application/json"}'
+          customHeaders: '{"Content-Type": "application/x-www-form-encoded"}'
