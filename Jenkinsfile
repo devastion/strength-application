@@ -1,11 +1,10 @@
 pipeline {
-    agent {
-        node {
-            label 'docker-agent-alpine'
-          }
-      }
+    agent none
     stages {
         stage('Build') {
+            agent {
+              label "docker-agent-alpine"
+            }
             steps {
                 echo "Building.."
                 sh '''
