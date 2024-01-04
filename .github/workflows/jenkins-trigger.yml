@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: fjogeleit/http-request-action@v1
         with:
-          url: ${{ secrets.JENKINS_URL }}
+          url: ${{ secrets.JENKINS_URL }}?token=${{ secrets.JENKINS_TOKEN }}
           method: "POST"
           customHeaders: '{"Content-Type": "application/json"}'
