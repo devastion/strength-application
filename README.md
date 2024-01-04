@@ -15,7 +15,7 @@ Roadmap:
 
 - [x] Wilks Page
 - [x] Switch from AWS to VPS
-- [ ] CI/CD Pipeline
+- [x] CI/CD Pipeline - using VPS with jenkins container and webhook to trigger the pipeline
 - [ ] History
 
 ## How to start the project
