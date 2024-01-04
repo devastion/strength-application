@@ -17,9 +17,7 @@ pipeline {
             steps {
                 echo 'Deploy....'
                 sh '''
-                docker stop strength-application
-                docker wait strength-application
-                docker run -p 3333:80 -d --name "strength-application" --rm strength-application:${BUILD_ID}
+                (docker stop strength-application || true) && docker run -p 3333:80 -d --name "strength-application" --rm strength-application:${BUILD_ID}
                 '''
             }
         }
