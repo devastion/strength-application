@@ -18,7 +18,7 @@ pipeline {
                 echo 'Deploy....'
                 sh '''
                 docker stop strength-application
-                docker run -p 3333:80 --name "strength-application" --rm strength-application:${BUILD_ID}
+                docker run -p 3333:80 -d --name "strength-application" --rm strength-application:${BUILD_ID}
                 '''
             }
         }
