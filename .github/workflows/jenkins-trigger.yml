@@ -1,0 +1,14 @@
+name: Trigger Jenkins
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deployment:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.JENKINS_URL }}
+          method: "POST"
+          customHeaders: '{"Content-Type": "application/json"}'
