@@ -3,6 +3,7 @@ import { Navigation } from "@modules/Navigation";
 import { Settings } from "@modules/Settings";
 import { cn } from "@root/lib/utils";
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
@@ -12,6 +13,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Strength Application",
   description: "Calculate your 1RM and wilks score!",
+};
+
+export const viewport: Viewport = {
+  maximumScale: 1,
+  initialScale: 1,
 };
 
 export default function RootLayout({

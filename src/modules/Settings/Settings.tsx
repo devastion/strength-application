@@ -17,14 +17,10 @@ import {
 } from "@lib/redux/slices/formulaSlice";
 import { selectUnitsState, setUnitState } from "@lib/redux/slices/unitsSlice";
 import { useAppDispatch, useAppSelector } from "@root/hooks";
+import { ItemsType } from "@root/types/itemsType";
 import { useTheme } from "next-themes";
 
 import { SelectButton } from "./components/SelectButton/SelectButton";
-
-interface ItemsType {
-  name: string;
-  value: string;
-}
 
 const themeItems: ItemsType[] = [
   { name: "Light Theme", value: "light" },
