@@ -10,7 +10,10 @@ interface YourRmProps {
   reps: number;
 }
 
-export const YourRm = ({ weight, reps, ...props }: YourRmProps) => {
+export const YourRm = React.forwardRef(function YourRm(
+  { weight, reps, ...props }: YourRmProps,
+  ref: React.LegacyRef<HTMLSpanElement> | undefined
+) {
   const formulaState = useAppSelector(selectFormulaState);
   const unitState = useAppSelector(selectUnitsState);
   const unit = unitState === "kilograms" ? "KG" : "LB";
@@ -30,6 +33,7 @@ export const YourRm = ({ weight, reps, ...props }: YourRmProps) => {
       </h3>
       <span
         className="text-5xl font-semibold text-red-600"
+        ref={ref}
         {...props}
       >
         {result}
@@ -37,4 +41,4 @@ export const YourRm = ({ weight, reps, ...props }: YourRmProps) => {
       </span>
     </>
   );
-};
+});

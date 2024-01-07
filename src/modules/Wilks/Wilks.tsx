@@ -7,11 +7,6 @@ import {
 import { selectUnitsState } from "@lib/redux/slices/unitsSlice";
 import { History } from "@modules//History";
 import { useAppDispatch, useAppSelector } from "@root/hooks";
-import {
-  clearHistory,
-  pushToHistory,
-  selectHistoryStateRM,
-} from "@root/lib/redux/slices/historySlice";
 import { ItemsType } from "@root/types/itemsType";
 
 import { InputRm } from "../OneRepMax/components/InputRm";
@@ -166,21 +161,14 @@ export const Wilks = () => {
       </div>
 
       <History
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        entries={useAppSelector(selectHistoryStateRM)}
-        clearHistoryFn={() => dispatch(clearHistory({ page: "rm", value: {} }))}
-        saveButtonFn={() =>
-          dispatch(
-            pushToHistory({
-              page: "rm",
-              value: {
-                gender: gender,
-                bodyweight: Number(defferedBw),
-                total: Number(defferedTotal),
-              },
-            })
-          )
-        }
+        page="wilks"
+        value={{
+          gender: gender,
+          bodyweight: Number(defferedBw),
+          total: Number(defferedTotal),
+          wilks: Number(wilks),
+        }}
+        saveIsActive={wilks > 0}
       />
     </div>
   );

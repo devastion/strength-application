@@ -1,17 +1,10 @@
 "use client";
 import React from "react";
 import { History } from "@modules//History";
-import { useAppDispatch, useAppSelector } from "@root/hooks";
-import {
-  clearHistory,
-  pushToHistory,
-  selectHistoryStateRM,
-} from "@root/lib/redux/slices/historySlice";
 
 import { InputRm } from "./components/InputRm";
 import { YourRm } from "./components/YourRm";
 export const OneRepMax = () => {
-  const dispatch = useAppDispatch();
   // ? Weight
   const weightRef = React.useRef<HTMLInputElement>(null);
   const [weight, setWeight] = React.useState<string>("");
@@ -38,6 +31,10 @@ export const OneRepMax = () => {
       setReps(repsRef.current ? repsRef.current.value : "");
     }
   }
+
+  // TODO: Types
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const oneRepMaxRef = React.useRef<any>(null);
 
   return (
     <div className="my-3 flex flex-col items-center justify-center pb-12">
@@ -75,23 +72,18 @@ export const OneRepMax = () => {
         data-testid="1rm-output"
         weight={Number.parseInt(deferredWeight)}
         reps={Number.parseInt(deferredReps)}
+        ref={oneRepMaxRef}
       />
 
       <History
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        entries={useAppSelector(selectHistoryStateRM)}
-        clearHistoryFn={() => dispatch(clearHistory({ page: "rm", value: {} }))}
-        saveButtonFn={() =>
-          dispatch(
-            pushToHistory({
-              page: "rm",
-              value: {
-                weight: Number(deferredWeight),
-                reps: Number(deferredReps),
-              },
-            })
-          )
-        }
+        page="rm"
+        value={{
+          weight: Number(deferredWeight),
+          reps: Number(deferredReps),
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+          "1RM": oneRepMaxRef.current?.textContent,
+        }}
+        saveIsActive={Number(deferredWeight) > 0 && Number(deferredReps) > 0}
       />
     </div>
   );

@@ -1,28 +1,34 @@
 import { Button } from "@components/ui/button";
+import { useAppDispatch, useAppSelector } from "@root/hooks";
+import {
+  clearHistory,
+  pushToHistory,
+  selectHistoryStateRM,
+  selectHistoryStateWilks,
+} from "@root/lib/redux/slices/historySlice";
 
 import { HistoryEntries } from "./components/HistoryEntry";
 import { Entry } from "./components/HistoryEntry/HistoryEntries";
 
-// TODO: Fix typings in History feature
-
 interface IHistory {
-  saveButtonFn: any;
-  clearHistoryFn: any;
-  entries: Entry[];
+  page: "rm" | "wilks";
+  value: Entry;
+  saveIsActive: boolean;
 }
 
-export const History = ({
-  saveButtonFn,
-  entries,
-  clearHistoryFn,
-}: IHistory) => {
+export const History = ({ page, value, saveIsActive }: IHistory) => {
+  const dispatch = useAppDispatch();
+  const entries = useAppSelector(
+    page === "rm" ? selectHistoryStateRM : selectHistoryStateWilks
+  );
   return (
     <>
       <Button
         variant="outline"
         className="mt-5 w-3/4"
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-assignment
-        onClick={saveButtonFn}
+        onClick={() =>
+          saveIsActive && dispatch(pushToHistory({ page: page, value: value }))
+        }
       >
         Save to History
       </Button>
@@ -32,7 +38,11 @@ export const History = ({
             key={i}
             className="flex w-3/4 flex-col items-center gap-5 pt-5"
           >
-            <HistoryEntries entries={entry} />
+            <HistoryEntries
+              id={i}
+              entries={entry}
+              page={page}
+            />
           </div>
         );
       })}
@@ -40,8 +50,7 @@ export const History = ({
         <Button
           variant="outline"
           className="mt-5"
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-assignment
-          onClick={clearHistoryFn}
+          onClick={() => dispatch(clearHistory({ page: page }))}
         >
           Clear History
         </Button>
