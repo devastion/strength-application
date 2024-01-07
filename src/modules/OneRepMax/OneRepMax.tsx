@@ -1,9 +1,12 @@
 "use client";
 import React from "react";
+import { selectFormulaState } from "@lib/redux/slices/formulaSlice";
+import { selectUnitsState } from "@lib/redux/slices/unitsSlice";
 import { History } from "@modules//History";
+import { useAppSelector } from "@root/hooks";
+import { Parser } from "expr-eval";
 
 import { InputRm } from "./components/InputRm";
-import { YourRm } from "./components/YourRm";
 export const OneRepMax = () => {
   // ? Weight
   const weightRef = React.useRef<HTMLInputElement>(null);
@@ -32,9 +35,18 @@ export const OneRepMax = () => {
     }
   }
 
-  // TODO: Types
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const oneRepMaxRef = React.useRef<any>(null);
+  const formulaState = useAppSelector(selectFormulaState);
+  const unitState = useAppSelector(selectUnitsState);
+  const unit = unitState === "kilograms" ? "KG" : "LB";
+  const expression = Parser.parse(formulaState);
+  const result =
+    deferredWeight && deferredReps
+      ? Math.round(
+          // ? the package is types as any
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          expression.evaluate({ weight: weight, reps: reps })
+        )
+      : 0;
 
   return (
     <div className="my-3 flex flex-col items-center justify-center pb-12">
@@ -68,12 +80,16 @@ export const OneRepMax = () => {
         errorMsg="Repetitions cannot be less than 1 or greater than 25"
       />
 
-      <YourRm
+      <h3 className="my-5 text-3xl font-bold uppercase text-slate-900 dark:text-slate-200">
+        Your 1RM is
+      </h3>
+      <span
         data-testid="1rm-output"
-        weight={Number.parseInt(deferredWeight)}
-        reps={Number.parseInt(deferredReps)}
-        ref={oneRepMaxRef}
-      />
+        className="text-5xl font-semibold text-red-600"
+      >
+        {result}
+        {unit}
+      </span>
 
       <History
         page="rm"
@@ -81,7 +97,7 @@ export const OneRepMax = () => {
           weight: Number(deferredWeight),
           reps: Number(deferredReps),
           // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-          "1RM": oneRepMaxRef.current?.textContent,
+          "1RM": `${result}${unit}`,
         }}
         saveIsActive={Number(deferredWeight) > 0 && Number(deferredReps) > 0}
       />

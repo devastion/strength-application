@@ -34,16 +34,12 @@ export const History = ({ page, value, saveIsActive }: IHistory) => {
       </Button>
       {entries.map((entry, i) => {
         return (
-          <div
+          <HistoryEntries
             key={i}
-            className="flex w-3/4 flex-col items-center gap-5 pt-5"
-          >
-            <HistoryEntries
-              id={i}
-              entries={entry}
-              page={page}
-            />
-          </div>
+            id={i}
+            entries={entry}
+            page={page}
+          />
         );
       })}
       {entries.length > 0 && (

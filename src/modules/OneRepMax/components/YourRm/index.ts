@@ -1,1 +1,0 @@
-export { YourRm } from "./YourRm";
