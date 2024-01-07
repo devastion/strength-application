@@ -5,7 +5,13 @@ import {
   setGenderState,
 } from "@lib/redux/slices/genderSlice";
 import { selectUnitsState } from "@lib/redux/slices/unitsSlice";
+import { History } from "@modules//History";
 import { useAppDispatch, useAppSelector } from "@root/hooks";
+import {
+  clearHistory,
+  pushToHistory,
+  selectHistoryStateRM,
+} from "@root/lib/redux/slices/historySlice";
 import { ItemsType } from "@root/types/itemsType";
 
 import { InputRm } from "../OneRepMax/components/InputRm";
@@ -158,6 +164,24 @@ export const Wilks = () => {
           {wilks}
         </span>
       </div>
+
+      <History
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        entries={useAppSelector(selectHistoryStateRM)}
+        clearHistoryFn={() => dispatch(clearHistory({ page: "rm", value: {} }))}
+        saveButtonFn={() =>
+          dispatch(
+            pushToHistory({
+              page: "rm",
+              value: {
+                gender: gender,
+                bodyweight: Number(defferedBw),
+                total: Number(defferedTotal),
+              },
+            })
+          )
+        }
+      />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import formulaSlice from "@lib/redux/slices/formulaSlice";
 import genderSlice from "@lib/redux/slices/genderSlice";
+import historySlice from "@lib/redux/slices/historySlice";
 import unitsSlice from "@lib/redux/slices/unitsSlice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   units: unitsSlice,
   formulas: formulaSlice,
   gender: genderSlice,
+  history: historySlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

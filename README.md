@@ -16,7 +16,7 @@ Roadmap:
 - [x] Wilks Page
 - [x] Switch from AWS to VPS
 - [x] CI/CD Pipeline - using VPS with jenkins container and action to trigger the pipeline. AWS is quiet expensive for my hobby projects and moved everything on my own VPS.
-- [ ] History
+- [x] History
 
 ## How to start the project
 
