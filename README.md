@@ -10,6 +10,8 @@ Tech Stack:
 - Redux / Redux Toolkit / Redux Persist
 - Jest
 - RadixUI (shadcn)
+- Jenkins
+- Grafana for monitoring Jenkins
 
 Roadmap:
 
