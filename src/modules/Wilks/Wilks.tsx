@@ -8,6 +8,7 @@ import { selectUnitsState } from "@lib/redux/slices/unitsSlice";
 import { History } from "@modules//History";
 import { useAppDispatch, useAppSelector } from "@root/hooks";
 import { ItemsType } from "@root/types/itemsType";
+import { calculateWilksPoints } from "wilks";
 
 import { InputRm } from "../OneRepMax/components/InputRm";
 import { SelectButton } from "../Settings/components/SelectButton/SelectButton";
@@ -16,45 +17,6 @@ const genders: ItemsType[] = [
   { name: "Male", value: "male" },
   { name: "Female", value: "female" },
 ];
-
-const maleValues: number[] = [
-  -216.047_514_4,
-  16.260_633_9,
-  -0.002_388_645,
-  -0.001_137_32,
-  7.018_63 * Math.pow(10, -6),
-  -1.291 * Math.pow(10, -8),
-];
-
-const femaleValues: number[] = [
-  594.317_477_755_82,
-  -27.238_425_364_47,
-  0.821_122_268_71,
-  -0.009_307_339_13,
-  4.731_582 * Math.pow(10, -5),
-  -9.054 * Math.pow(10, -8),
-];
-
-function calculateWilks(
-  gender: string,
-  bodyWeight: number,
-  total: number,
-  unitType: string
-) {
-  const totalConverted =
-    unitType === "pounds" ? total / 2.204_622_621_85 : total;
-  const bodyweightConverted =
-    unitType === "pounds" ? bodyWeight / 2.204_622_621_85 : bodyWeight;
-
-  let coeff = 0;
-  const values = gender === "male" ? maleValues : femaleValues;
-
-  for (let i = 0; i < 6; i++) {
-    coeff += i === 0 ? values[i] : values[i] * Math.pow(bodyweightConverted, i);
-  }
-
-  return totalConverted * (500 / coeff);
-}
 
 export const Wilks = () => {
   const dispatch = useAppDispatch();
@@ -91,8 +53,11 @@ export const Wilks = () => {
     if (defferedBw && defferedTotal) {
       const bodyWeight = Number(defferedBw);
       const liftedTotal = Number(defferedTotal);
-      const wilksScore = Number(
-        calculateWilks(gender, bodyWeight, liftedTotal, unitState).toFixed(2)
+      const wilksScore = calculateWilksPoints(
+        gender === "male" ? "m" : "f",
+        bodyWeight,
+        liftedTotal,
+        unitState === "kilograms" ? "metric" : "imperial"
       );
       setWilks(wilksScore);
     } else {
