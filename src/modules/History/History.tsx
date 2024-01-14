@@ -23,15 +23,28 @@ export const History = ({ page, value, saveIsActive }: IHistory) => {
   );
   return (
     <>
-      <Button
-        variant="outline"
-        className="mt-5 w-3/4"
-        onClick={() =>
-          saveIsActive && dispatch(pushToHistory({ page: page, value: value }))
-        }
-      >
-        Save to History
-      </Button>
+      <div className="mt-5 flex w-3/4 flex-row items-center">
+        {entries.length > 0 && (
+          <Button
+            variant="outline"
+            onClick={() => dispatch(clearHistory({ page: page }))}
+          >
+            Clear History
+          </Button>
+        )}
+        {saveIsActive && (
+          <Button
+            className="ml-auto"
+            variant="outline"
+            onClick={() =>
+              saveIsActive &&
+              dispatch(pushToHistory({ page: page, value: value }))
+            }
+          >
+            Save to History
+          </Button>
+        )}
+      </div>
       {entries.map((entry, i) => {
         return (
           <HistoryEntries
@@ -42,15 +55,6 @@ export const History = ({ page, value, saveIsActive }: IHistory) => {
           />
         );
       })}
-      {entries.length > 0 && (
-        <Button
-          variant="outline"
-          className="mt-5"
-          onClick={() => dispatch(clearHistory({ page: page }))}
-        >
-          Clear History
-        </Button>
-      )}
     </>
   );
 };
