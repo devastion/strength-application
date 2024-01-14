@@ -4,14 +4,15 @@ Simple web application to estimate your one rep max of a gym lift based on the l
 
 [**LIVE DEMO** - https://strength-application.devastion.com/](https://strength-application.devastion.com/)
 
+The goal is to practice NextJS and see how it works. One **MAJOR** problem I found and didn't think of is that using `redux-persist` library blocks the initial render on the server side, because it neeeds the client's localstorage to load. Since database is kinda overkill for this project I decided to persist state in the localstorage that way.
+
 Tech Stack:
 
-- NextJS
+- NextJS w/ TypeScript
 - Redux / Redux Toolkit / Redux Persist
-- Jest
-- RadixUI (shadcn)
+- Jest w/ React Testing Library
+- RadixUI (shadcn) & TailwindCSS
 - Jenkins
-- Grafana for monitoring Jenkins
 
 Roadmap:
 
