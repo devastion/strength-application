@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Strength Application",
   description: "Calculate your 1RM and wilks score!",
+  authors: { name: "Dimitar Banev", url: "https://github.com/devastion" },
+  keywords: ["wilks calculator", "one rep max calculator", "1rm calculator"],
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
