@@ -1,0 +1,1 @@
+- [ ] - fix bug on mobile, where you can't enter decimals
