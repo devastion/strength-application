@@ -8,7 +8,7 @@ import { selectUnitsState } from "@lib/redux/slices/unitsSlice";
 import { History } from "@modules//History";
 import { useAppDispatch, useAppSelector } from "@root/hooks";
 import { ItemsType } from "@root/types/itemsType";
-import { calculateWilksPoints } from "wilks";
+import { calculateWilks } from "wilks";
 
 import { InputRm } from "../OneRepMax/components/InputRm";
 import { SelectButton } from "../Settings/components/SelectButton/SelectButton";
@@ -53,7 +53,7 @@ export const Wilks = () => {
     if (defferedBw && defferedTotal) {
       const bodyWeight = Number(defferedBw);
       const liftedTotal = Number(defferedTotal);
-      const wilksScore = calculateWilksPoints(
+      const wilksScore = calculateWilks(
         gender === "male" ? "m" : "f",
         bodyWeight,
         liftedTotal,
