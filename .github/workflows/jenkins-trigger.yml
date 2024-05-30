@@ -10,6 +10,7 @@ jobs:
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1.15.5
       with:
-        url: "${{ secrets.JENKINS_URL }}${{ secrets.JENKINS_TOKEN }}"
+        url: '${{ secrets.JENKINS_URL }}'
         method: 'POST'
         customHeaders: '{"Content-Type": "application/json;charset=utf-8"}'
+        data: '{"token": "${{ secrets.JENKINS_TOKEN }}"}'
