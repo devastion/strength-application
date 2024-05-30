@@ -5,10 +5,11 @@ on:
       - main
 jobs:
   deployment:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: fjogeleit/http-request-action@v1
-        with:
-          url: ${{ secrets.JENKINS_URL }}${{ secrets.JENKINS_TOKEN }}
-          method: "POST"
-          customHeaders: '{"Content-Type": "application/json"}'
+    - name: Deploy Stage
+      uses: fjogeleit/http-request-action@v1.15.5
+      with:
+        url: '${{ secrets.JENKINS_URL }}${{ secrets.JENKINS_TOKEN }}'
+        method: 'POST'
+        customHeaders: '{"Content-Type": "application/json"}'
