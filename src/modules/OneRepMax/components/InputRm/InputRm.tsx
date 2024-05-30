@@ -44,7 +44,7 @@ export const InputRm = React.forwardRef<HTMLInputElement, InputRmProps>(
         <Input
           id={label.toLowerCase()}
           type="number"
-          inputMode="numeric"
+          inputMode="decimal"
           className="my-2"
           value={value}
           ref={ref}
